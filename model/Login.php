@@ -1,13 +1,10 @@
 <?php
-
-class Usuario
-{
-    private $id;
-    private $nome;
-    private $email;
-    private $senha;
-    private $ativo;
-
+class Login{
+    protected $nome;
+    protected $email;
+    protected $senha;
+    protected $sexo;
+    protected $idade;
     public function __get($atributo)
     {
         return $this->$atributo;
@@ -19,5 +16,4 @@ class Usuario
         return $this;
     }
 }
-
 ?>

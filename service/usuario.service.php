@@ -1,110 +1,62 @@
 <?php
 
-class UsuarioService
-{
-    private $conexao;
-    private $usuario;
+class LoginService {
+    protected $conexao;
 
-    public function __construct(Conexao $conexao, Usuario $usuario)
-    {
+    public function __construct(Conexao $conexao) {
         $this->conexao = $conexao->conectar();
-        $this->usuario = $usuario;
     }
 
-    public function inserir()
-    {
-        $query = 'insert into usuario(nome, email, senha)values(:nome, :email, :senha)';
+    public function inserirUsuario($nome, $email, $senha) {
+        // Criação da query de inserção
+        $query = 'INSERT INTO tb_usuarios (nome, email, senha) VALUES (:nome, :email, :senha)';
+        
+        // Preparação da query
         $stmt = $this->conexao->prepare($query);
-        $stmt->bindValue(':nome', $this->usuario->__get('nome'));
-        $stmt->bindValue(':email', $this->usuario->__get('email'));
-        $stmt->bindValue(':senha', $this->usuario->__get('senha'));
+        
+        // Bind dos parâmetros
+        $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':senha', $senha);
+        
+        // Execução da query
         $stmt->execute();
     }
 
-    public function recuperar()
-    {
-        //R - read
-        $query = '
-            select
-                usuario.id, 
-                usuario.nome, 
-                usuario.email
-            from
-                usuario 
-        ';
-
+    public function verificarLogin($email, $senha) {
+        // Query para buscar o usuário com base no email e senha
+        $query = 'SELECT * FROM tb_usuarios WHERE email = :email AND senha = :senha';
+        
+        // Preparação da query
         $stmt = $this->conexao->prepare($query);
+        
+        // Bind dos parâmetros
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':senha', $senha);
+        
+        // Execução da query
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    public function recuperarPorEmail()
-    {
-
-        $query = '
-            select
-                usuario.id, 
-                usuario.nome, 
-                usuario.email,
-                usuario.senha
-            from
-                usuario
-            where usuario.email = :email
-        ';
-
-        $stmt = $this->conexao->prepare($query);
-        $stmt->bindValue(':email', $this->usuario->__get('email'));
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    public function atualizarNome()
-    {
-        //U - update
-        $query = "
-        update 
-            usuario 
-        set 
-            nome = ? 
-        where 
-            id = ?";
-        $stmt = $this->conexao->prepare($query);
-        $stmt->bindValue(1, $this->usuario->__get('nome'));
-        $stmt->bindValue(2, $this->usuario->__get('id'));
-        return $stmt->execute();
-    }
-
-    public function atualizarEmail()
-    {
-        //U - update
-        $query = "
-        update 
-            usuario 
-        set 
-            email = ? 
-        where 
-            id = ?";
-        $stmt = $this->conexao->prepare($query);
-        $stmt->bindValue(1, $this->usuario->__get('email'));
-        $stmt->bindValue(2, $this->usuario->__get('id'));
-        return $stmt->execute();
-    }
-
-    public function remover()
-    {
-        //D - delete
-        $query = '
-        delete from 
-            usuario
-        where
-            id= :id 
-        ';
-        $stmt = $this->conexao->prepare($query);
-        $stmt->bindValue(':id', $this->usuario->__get('id'));
-        $stmt->execute();
+        
+        // Retorna o resultado da busca
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
 
+// Exemplo de uso:
+// Crie um objeto Conexao com os detalhes da conexão com o banco de dados
 
+$conexao = new Conexao($host, $dbname, $usuario, $senha);
+$loginService = new LoginService($conexao);
 
+// Para inserir um usuário
+$loginService->inserirUsuario('Nome do Usuário', 'email@example.com', 'senha123');
+
+// Para verificar o login
+$resultado = $loginService->verificarLogin('email@example.com', 'senha123');
+
+if ($resultado) {
+    echo "Login bem-sucedido. Bem-vindo, " . $resultado['nome'];
+} else {
+    echo "Credenciais inválidas. Por favor, tente novamente.";
+}
 ?>
