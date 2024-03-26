@@ -15,52 +15,12 @@
 		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<!-- Estilo personalizado -->
-	<link rel="stylesheet" href="css/estilo.css">
+	<link rel="stylesheet" href="estilo/estilo.css">
 
 	<!-- Folha de Estilo do Leaflet -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
-	<style>
-		#map {
-			height: 100vh;
-			/* Ocupa a altura total da tela */
-			width: 100%;
-			/* Ocupa a largura total da tela */
-			position: fixed;
-			/* Permite que o mapa ocupe a tela toda */
-			top: 0;
-			/* Alinha o mapa ao topo da tela */
-			left: 0;
-			/* Alinha o mapa à esquerda da tela */
-			z-index: 0;
-			/* Garante que o mapa fique abaixo de outros elementos */
-		}
-
-		#input-container {
-			position: fixed;
-			/* Permite posicionar o input de forma fixa */
-			bottom: 10px;
-			/* Distância do bottom */
-			left: 50%;
-			/* Alinha o input horizontalmente */
-			transform: translateX(-50%);
-			/* Centraliza horizontalmente o input */
-			z-index: 1000;
-			/* Garante que o input fique sobre o mapa */
-		}
-
-		.form-group {
-			margin-bottom: 0;
-			/* Remove a margem inferior do grupo de formulário */
-		}
-
-		.form-control {
-			display: inline-block;
-			/* Permite que o input e o botão fiquem na mesma linha */
-			width: auto;
-			/* Define a largura automática para o input */
-		}
-	</style>
+	
 </head>
 
 <body>
