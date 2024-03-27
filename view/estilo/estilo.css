@@ -1,3 +1,7 @@
+* {
+    font-family: 'Cera Round Pro', sans-serif;
+}
+
 .menu {
 	margin-bottom: 25px;
 }
@@ -7,14 +11,14 @@
 }
 
 .pagina {
-	border:solid 1px #DFDFDF;
-	padding:25px !important;
+	border: solid 1px #DFDFDF;
+	padding: 25px !important;
 }
 
 li.list-group-item.active {
 	background-color: #fff;
 	border-color: #009933;
-    border-left:solid 10px #009933;
+	border-left: solid 10px #009933;
 }
 
 li a {
@@ -28,6 +32,7 @@ li a:hover {
 h4 {
 	color: #009933 !important;
 }
+
 .card-login {
 	padding: 30px 0 0 0;
 	width: 350px;
@@ -72,4 +77,16 @@ h4 {
 	/* Permite que o input e o botão fiquem na mesma linha */
 	width: auto;
 	/* Define a largura automática para o input */
+}
+
+.box-side {
+	width: 50px;
+	height: 50px;
+	background-color: #212529;
+	left: 0;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
 }

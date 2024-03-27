@@ -15,7 +15,7 @@
 		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<!-- Estilo personalizado -->
-	<link rel="stylesheet" href="view/estilo/estilo.css">
+	<link rel="stylesheet" href="estilo/estilo.css">
 
 	<!-- Folha de Estilo do Leaflet -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
