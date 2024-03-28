@@ -7,6 +7,7 @@ require_once './model/conexao.php';
 class LoginController
 {
     private $usuario;
+    private $conexao;
 
     public function __construct(Conexao $conexao)
     {

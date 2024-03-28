@@ -57,7 +57,7 @@
             </table>
         </div>
 
-        <div class="row justify-content-end">
+        <div class="row justify-content-start">
             <a href="./menu.view.php">
                 <button type="button" class="btn btn-outline-secondary mb-2 ml-2">
                     <i class="fas fa-arrow-left mr-1"></i> Voltar

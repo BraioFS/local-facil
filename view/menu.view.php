@@ -1,3 +1,10 @@
+<?php
+
+$acao = 'buscarTodosAgiotas';
+require '../controller/agiota.controller.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -27,17 +34,17 @@
 
 	<div id="input-container">
 		<form class="form-inline">
-			<a href="./view/lista_favoritos.view.php">
+			<a href="./lista_favoritos.view.php">
 				<button type="button" class="btn btn-danger mb-2">
 					<i class="fas fa-star mr-1"></i> Favoritos
 				</button>
 			</a>
-			<a href="./view/lista_agiotas.view.php">
+			<a href="./lista_agiotas.view.php">
 				<button type="button" class="btn btn-info mb-2 ml-2">
 					<i class="fas fa-male mr-1"></i> Agiotas
 				</button>
 			</a>
-			<a href="./view/lista_dividas.view.php">
+			<a href="./lista_dividas.view.php">
 				<button type="button" class="btn btn-success mb-2 ml-2">
 					<i class="fas fa-credit-card mr-1"></i> Dívidas
 				</button>

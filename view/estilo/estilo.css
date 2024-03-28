@@ -56,27 +56,19 @@ h4 {
 
 #input-container {
 	position: fixed;
-	/* Permite posicionar o input de forma fixa */
 	bottom: 10px;
-	/* Distância do bottom */
 	left: 50%;
-	/* Alinha o input horizontalmente */
 	transform: translateX(-50%);
-	/* Centraliza horizontalmente o input */
 	z-index: 1000;
-	/* Garante que o input fique sobre o mapa */
 }
 
 .form-group {
 	margin-bottom: 0;
-	/* Remove a margem inferior do grupo de formulário */
 }
 
 .form-control {
 	display: inline-block;
-	/* Permite que o input e o botão fiquem na mesma linha */
 	width: auto;
-	/* Define a largura automática para o input */
 }
 
 .box-side {
@@ -89,4 +81,8 @@ h4 {
 a {
 	color: #fff;
 	text-decoration: none;
+}
+
+input{
+	height: 50px;
 }

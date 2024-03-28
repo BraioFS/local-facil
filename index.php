@@ -15,44 +15,60 @@
 		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<!-- Estilo personalizado -->
-	<link rel="stylesheet" href="view/estilo/estilo.css">
+	<link rel="stylesheet" href="estilo/estilo.css">
+	<style>
+		html,
+		body {
+			height: 100%;
+		}
 
-	<!-- Folha de Estilo do Leaflet -->
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 
+		.card-login {
+			width: 400px;
+			padding: 20px;
+			border-radius: 10px;
+		}
+
+		.card-login .card-header {
+			color: #fff;
+			font-size: 20px;
+		}
+	</style>
 </head>
 
-<body>
+<body class="bg-light">
 	<div class="container">
-		<div class="row">
-			<div class="card-login">
-				<div class="card">
-					<div class="card-header">
-						Login
-					</div>
-					<div class="card-body">
-						<form action="valida_login.php" method="post">
-							<div class="form-group">
-								<input name="email" type="email" class="form-control" placeholder="E-mail">
+		<div class="card-login">
+			<div class="card bg-dark">
+				<div class="card-header">
+					Login
+				</div>
+				<div class="card-body">
+					<form action="valida_login.php" method="post">
+						<div class="form-group">
+							<input name="email" type="email" class="form-control w-100" placeholder="E-mail">
+						</div>
+						<div class="form-group mt-1 mb-1">
+							<input name="senha" type="password" class="form-control w-100" placeholder="Senha">
+						</div>
+						<?php if (isset($_GET['login']) && $_GET['login'] == 'erro') { ?>
+							<div class="text-danger">
+								Usuário ou senha inválido(s)
 							</div>
-							<div class="form-group mt-1 mb-1">
-								<input name="senha" type="password" class="form-control" placeholder="Senha">
-							</div>
-							<?php if (isset($_GET['login']) && $_GET['login'] == 'erro') { ?>
-								<div class="text-danger">
-									Usuário ou senha inválido(s)
-								</div>
-							<?php } ?>
-							<button class="btn btn-outline-secondary btn-block" type="submit">
-								Entrar
-							</button>
-						</form>
-					</div>
+						<?php } ?>
+						<button class="btn btn-outline-secondary btn-block mt-3" type="submit">
+							Entrar
+						</button>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
 </body>
 
 </html>

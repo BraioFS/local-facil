@@ -1,12 +1,11 @@
 <?php
 
-class Estabelecimento
+class Agiota
 {
     private $id;
     private $nome;
-    private $quantidade_prisoes;
-    private $horario_funcionamento;
-    private $ativo;
+    private $url;
+    private $estrelas;
 
     public function __get($atributo)
     {
