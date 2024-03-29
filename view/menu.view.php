@@ -58,6 +58,8 @@ require '../controller/agiota.controller.php';
 	<!-- Scripts -->
 	<!-- Biblioteca do Leaflet -->
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<!-- Biblioteca do jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 	<script>
 		// Função para criar o popup com as informações desejadas
@@ -95,20 +97,14 @@ require '../controller/agiota.controller.php';
 					L.marker([lat, lon]).addTo(map).bindPopup('Você está aqui!');
 
 					// Array de URLs de imagens
-					var imageUrls = [
-						'https://via.placeholder.com/50',
-						'https://via.placeholder.com/50',
-						'https://via.placeholder.com/50',
-						'https://via.placeholder.com/50',
-						'https://via.placeholder.com/50'
-					];
+					var listaUrls = <?php echo json_encode($listaUrls); ?>;
 
 					// Adiciona entre 1 e 5 marcadores com ícones personalizados
 					var numMarkers = Math.floor(Math.random() * 5) + 1; // Entre 1 e 5 marcadores
 					for (var i = 0; i < numMarkers; i++) {
 						var randomLatOffset = (Math.random() - 0.5) / 111.2 * 5; // Aproximadamente 111.2 km por grau de latitude
 						var randomLonOffset = (Math.random() - 0.5) / (111.2 * Math.cos(lat * Math.PI / 180)) * 5; // Aproximadamente 111.2 km por grau de longitude
-						var randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+						var randomImageUrl = listaUrls[Math.floor(Math.random() * listaUrls.length)];
 						var icon = L.icon({
 							iconUrl: randomImageUrl,
 							iconSize: [50, 50], // Tamanho do ícone

@@ -20,12 +20,15 @@
 		html,
 		body {
 			height: 100%;
+			margin: 0;
+			padding: 0;
 		}
 
 		body {
 			display: flex;
-			align-items: center;
 			justify-content: center;
+			align-items: center;
+			text-align: center;
 		}
 
 		.card-login {
@@ -42,30 +45,28 @@
 </head>
 
 <body class="bg-light">
-	<div class="container">
-		<div class="card-login">
-			<div class="card bg-dark">
-				<div class="card-header">
-					Login
-				</div>
-				<div class="card-body">
-					<form action="valida_login.php" method="post">
-						<div class="form-group">
-							<input name="email" type="email" class="form-control w-100" placeholder="E-mail">
+	<div class="card-login">
+		<div class="card bg-dark">
+			<div class="card-header">
+				Login
+			</div>
+			<div class="card-body">
+				<form action="valida_login.php" method="post">
+					<div class="form-group">
+						<input name="email" type="email" class="form-control w-100" placeholder="E-mail">
+					</div>
+					<div class="form-group mt-1 mb-1">
+						<input name="senha" type="password" class="form-control w-100" placeholder="Senha">
+					</div>
+					<?php if (isset($_GET['login']) && $_GET['login'] == 'erro') { ?>
+						<div class="text-danger">
+							Usuário ou senha inválido(s)
 						</div>
-						<div class="form-group mt-1 mb-1">
-							<input name="senha" type="password" class="form-control w-100" placeholder="Senha">
-						</div>
-						<?php if (isset($_GET['login']) && $_GET['login'] == 'erro') { ?>
-							<div class="text-danger">
-								Usuário ou senha inválido(s)
-							</div>
-						<?php } ?>
-						<button class="btn btn-outline-secondary btn-block mt-3" type="submit">
-							Entrar
-						</button>
-					</form>
-				</div>
+					<?php } ?>
+					<button class="btn btn-outline-secondary btn-block mt-3" type="submit">
+						Entrar
+					</button>
+				</form>
 			</div>
 		</div>
 	</div>

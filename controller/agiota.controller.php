@@ -1,19 +1,21 @@
 <?php
 
-require_once './model/agiota.model.php';
-require_once './service/agiota.service.php';
-require_once './model/conexao.php';
+require '../model/agiota.model.php';
+require '../service/agiota.service.php';
+require '../model/conexao.php';
 
 $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 if ($acao == 'buscarTodosAgiotas') {
-    $agiota = new Agiota();
+    $agiota = new Agiota('', '', '');
     $conexao = new Conexao();
 
-    $agiotaService = new AgiotaService($conexao, $usuario);
+    $agiotaService = new AgiotaService($conexao, $agiota);
     $listaAgiotas = $agiotaService->buscarTodosAgiotas();
-
-    echo ($listaAgiotas[0]->nome);
-
+    $listaUrls = array();
+    foreach ($listaAgiotas as $agiota) {
+        $listaUrls[] = $agiota->url;
+    }
+    
 }
 
 ?>
