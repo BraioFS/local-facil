@@ -97,14 +97,22 @@ require '../controller/agiota.controller.php';
 					L.marker([lat, lon]).addTo(map).bindPopup('Você está aqui!');
 
 					// Array de URLs de imagens
-					var listaUrls = <?php echo json_encode($listaUrls); ?>;
+					var agiotaData = <?php echo json_encode($agiotaData); ?>;
+
+					// Array de URLs de imagens
+					var agiotaData = <?php echo json_encode($agiotaData); ?>;
+					// Embaralha os dados do array agiotaData
+					agiotaData = shuffleArray(agiotaData);
 
 					// Adiciona entre 1 e 5 marcadores com ícones personalizados
 					var numMarkers = Math.floor(Math.random() * 5) + 1; // Entre 1 e 5 marcadores
 					for (var i = 0; i < numMarkers; i++) {
+						var agiota = agiotaData[i];
+						var randomImageUrl = agiota.url;
+
 						var randomLatOffset = (Math.random() - 0.5) / 111.2 * 5; // Aproximadamente 111.2 km por grau de latitude
 						var randomLonOffset = (Math.random() - 0.5) / (111.2 * Math.cos(lat * Math.PI / 180)) * 5; // Aproximadamente 111.2 km por grau de longitude
-						var randomImageUrl = listaUrls[Math.floor(Math.random() * listaUrls.length)];
+
 						var icon = L.icon({
 							iconUrl: randomImageUrl,
 							iconSize: [50, 50], // Tamanho do ícone
@@ -114,12 +122,20 @@ require '../controller/agiota.controller.php';
 						L.marker([lat + randomLatOffset, lon + randomLonOffset], {
 							icon: icon
 						}).addTo(map)
-							.bindPopup(criarPopup(randomImageUrl, "Local Aleatório", Math.floor(Math.random() * 5) + 1));
+							.bindPopup(criarPopup(randomImageUrl, agiota.nome, Math.floor(Math.random() * 5) + 1));
 					}
 				});
 			} else {
 				alert('Seu navegador não suporta Geolocalização.');
 			}
+		}
+
+		function shuffleArray(array) {
+			for (let i = array.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1));
+				[array[i], array[j]] = [array[j], array[i]];
+			}
+			return array;
 		}
 	</script>
 

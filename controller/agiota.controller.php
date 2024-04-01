@@ -12,10 +12,18 @@ if ($acao == 'buscarTodosAgiotas') {
     $agiotaService = new AgiotaService($conexao, $agiota);
     $listaAgiotas = $agiotaService->buscarTodosAgiotas();
     $listaUrls = array();
+    // Converta a lista de agiotas para um formato adequado para enviar ao frontend
+    $agiotaData = [];
     foreach ($listaAgiotas as $agiota) {
-        $listaUrls[] = $agiota->url;
+        // Supondo que $agiota->url contém a URL de cada agiota
+        // e $agiota->nome contém o nome de cada agiota
+        $agiotaData[] = [
+            'url' => $agiota->url,
+            'nome' => $agiota->nome
+        ];
     }
-    
+
+
 }
 
 ?>
