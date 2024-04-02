@@ -38,9 +38,20 @@ class AgiotaService
         $stmt->execute($params);
     }
 
+    public function buscarAgiotasFavoritos()
+    {
+        $query = '
+            select
+                *
+            from
+                agiota 
+            where favorito = 1
+        ';
+
+        $stmt = $this->conexao->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
 
 }
-
-
-
-?>

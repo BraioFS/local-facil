@@ -1,3 +1,8 @@
+<?php
+$acao = 'buscarAgiotasFavoritos';
+require '../controller/agiota.controller.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,12 +13,10 @@
     <title>Lista Favoritos</title>
 
     <!-- Folha de Estilo do Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!-- Folha de Estilo do Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <!-- Estilo personalizado -->
     <link rel="stylesheet" href="estilo/estilo.css">
@@ -29,30 +32,28 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Imagem</th>
+                        <th scope="col">Nome</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    <?php
+
+                    foreach ($listaFavoritos as $key => $agiota) {
+                    ?>
+                        <tr>
+                            <td>
+                                <img src="<?php echo $agiota->url; ?>" class="img-thumbnail" alt="Foto do Agiota" width="80">
+                            </td>
+                            <td>
+                                <?php echo $agiota->nome; ?>
+                            </td>
+
+                        </tr>
+                    <?php
+
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
