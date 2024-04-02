@@ -55,7 +55,6 @@ require '../controller/agiota.controller.php';
 		</form>
 	</div>
 
-	<!-- Scripts -->
 	<!-- Biblioteca do Leaflet -->
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 	<!-- Biblioteca do jQuery -->
@@ -63,8 +62,8 @@ require '../controller/agiota.controller.php';
 
 	<script>
 		// Função para criar o popup com as informações desejadas
-		function criarPopup(imagemUrl, nome, estrelas) {
-			// Cria uma string HTML com as informações
+		function criarPopup(id, imagemUrl, nome, estrelas) {
+			// Cria uma string HTML com as informações e os botões Favoritar e Emprestar
 			var popupContent = '<img src="' + imagemUrl + '" style="max-width: 100px;"><br>';
 			popupContent += 'Nome: ' + nome + '<br>';
 			popupContent += 'Estrelas: ';
@@ -72,8 +71,19 @@ require '../controller/agiota.controller.php';
 			for (var i = 0; i < estrelas; i++) {
 				popupContent += '<i class="fas fa-star"></i>';
 			}
+			// Adiciona os botões Favoritar e Emprestar
+			popupContent += '<div class="mt-2">';
+			popupContent += '<button class="btn btn-danger btn-sm mr-2" onclick="favoritar(' + id + ', \'' + nome + '\')"><i class="fas fa-heart"></i></button>';
+			popupContent += '<button class="btn btn-success btn-sm" onclick="emprestar()">Negociar</button>';
+			popupContent += '</div>';
 			// Cria e retorna o popup
 			return L.popup().setContent(popupContent);
+		}
+
+		// Função para ser chamada ao clicar no botão Favoritar
+		function favoritar() {
+
+			alert('Item favoritado!');
 		}
 
 		var map;
@@ -96,10 +106,8 @@ require '../controller/agiota.controller.php';
 					}).addTo(map);
 					L.marker([lat, lon]).addTo(map).bindPopup('Você está aqui!');
 
-					// Array de URLs de imagens
-					var agiotaData = <?php echo json_encode($agiotaData); ?>;
-
-					// Array de URLs de imagens
+					
+					// Array de agiotas
 					var agiotaData = <?php echo json_encode($agiotaData); ?>;
 					// Embaralha os dados do array agiotaData
 					agiotaData = shuffleArray(agiotaData);
@@ -122,7 +130,7 @@ require '../controller/agiota.controller.php';
 						L.marker([lat + randomLatOffset, lon + randomLonOffset], {
 							icon: icon
 						}).addTo(map)
-							.bindPopup(criarPopup(randomImageUrl, agiota.nome, Math.floor(Math.random() * 5) + 1));
+							.bindPopup(criarPopup(agiota.id, randomImageUrl, agiota.nome, Math.floor(Math.random() * 5) + 1));
 					}
 				});
 			} else {

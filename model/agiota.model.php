@@ -6,13 +6,15 @@ class Agiota
     private $nome;
     private $url;
     private $estrelas;
+    private $favorito;
 
     
-    public function __construct($nome, $url, $estrelas)
+    public function __construct($nome, $url, $estrelas, $favorito)
     {
         $this->nome = $nome;
         $this->url = $url;
         $this->estrelas = $estrelas;
+        $this->favorito = $favorito;
     }
 
     public function __get($atributo)

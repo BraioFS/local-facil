@@ -25,6 +25,20 @@ class AgiotaService
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function favoritarAgiota($id, $nome_agiota)
+    {
+        $query = 'INSERT INTO favoritos (agiota_id, nome_agiota) VALUES (:agiota_id, :nome_agiota)';
+
+        $params = array(
+            ':agiota_id' => $id,
+            ':nome_agiota' => $nome_agiota
+        );
+        
+        $stmt = $this->conexao->prepare($query);
+        $stmt->execute($params);
+    }
+
+
 }
 
 

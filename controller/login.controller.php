@@ -33,7 +33,7 @@ class LoginController
     private function buscarUsuarioBanco()
     {
         try {
-            $query = "SELECT * FROM usuarios";
+            $query = "SELECT * FROM usuario";
             $stmt = $this->conexao->prepare($query);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
