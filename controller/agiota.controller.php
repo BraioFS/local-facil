@@ -21,7 +21,8 @@ if ($acao == 'buscarTodosAgiotas') {
             'id' => $agiota->id,
             'url' => $agiota->url,
             'nome' => $agiota->nome,
-            'favorito' => $agiota->favorito
+            'favorito' => $agiota->favorito,
+            'mortes' => $agiota->mortes
         ];
     }
 } else if ($acao == 'favoritarAgiota') {

@@ -35,8 +35,8 @@ require '../controller/agiota.controller.php';
                     <tr>
                         <th scope="col">Perfil</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Estrelas</th>
-                        <th scope="col">Ação</th>
+                        <th scope="col">Periculosidade</th>
+                        <th scope="col">Mortes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,7 +60,8 @@ require '../controller/agiota.controller.php';
                                 ?>
                             </td>
 
-                            <td>
+                            <td class="pl-4 align-middle">
+                                <?php echo $agiota->mortes; ?>
                             </td>
 
                         </tr>

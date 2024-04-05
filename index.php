@@ -34,18 +34,20 @@
 <body class="bg-light">
 	<div class="container">
 		<div class="row">
-			<img src="tmp/img/11.png" class="rounded mx-auto d-block" alt="foto" width="300" height="300">
+			<img src="tmp/img/logo-palinha.svg" class="shadow-sm rounded mx-auto d-block" alt="foto" width="300" height="300">
 		</div>
 
 		<div class="row mt-5">
 			<div class="col text-center">
-				<label>Conectado quem precisa de dinheiro aos melhores agiotas!</label>
+				<div class="shadow-sm bg-light p-3 w-50 mx-auto">
+					<label class="mb-0">Conectado quem precisa de dinheiro aos melhores agiotas!</label>
+				</div>
 			</div>
 		</div>
 		<div class="row mt-5 text-center">
 			<div class="col">
-				<a href="view/cadastro.view.php" class="btn btn-outline-info w-25 ml-2">Cadastre-se</a>
-				<a href="view/login.view.php" class="btn btn-outline-secondary w-25">Logar</a>
+				<a href="view/cadastro.view.php" class="shadow-sm btn btn-primary w-25 ml-2 mx-auto">Cadastre-se</a>
+				<a href="view/login.view.php" class="shadow-sm btn btn-secondary w-25 mx-auto">Logar</a>
 			</div>
 		</div>
 	</div>

@@ -38,7 +38,6 @@
 		}
 
 		.card-login .card-header {
-			color: #fff;
 			font-size: 20px;
 		}
 	</style>
@@ -46,7 +45,7 @@
 
 <body class="bg-light">
 	<div class="card-login">
-		<div class="card bg-dark">
+		<div class="card bg-light">
 			<div class="card-header">
 				Login
 			</div>
@@ -54,7 +53,7 @@
 				<form action="../valida_login.php" method="post">
 					<div class="form-group">
 						<input name="email" type="email" class="form-control w-100" placeholder="E-mail">
-					</div>
+					</div> 
 					<div class="form-group mt-1 mb-1">
 						<input name="senha" type="password" class="form-control w-100" placeholder="Senha">
 					</div>
@@ -63,7 +62,7 @@
 							Usuário ou senha inválido(s)
 						</div>
 					<?php } ?>
-					<button class="btn btn-outline-secondary btn-block mt-3" type="submit">
+					<button class="btn btn-success btn-block mt-3" type="submit">
 						Entrar
 					</button>
 				</form>

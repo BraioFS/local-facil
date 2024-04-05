@@ -30,6 +30,18 @@ class LoginController
         $this->error();
     }
 
+    public function cadastrar($nome, $email, $senha)
+    {
+        $query = 'insert into usuario(nome, email, senha)values(:nome, :email, :senha)';
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':senha', $senha);
+        $stmt->execute();
+
+        header('Location: ./view/login.view.php');
+    }
+
     private function buscarUsuarioBanco()
     {
         try {
@@ -45,9 +57,7 @@ class LoginController
     public function error()
     {
         $_SESSION['autenticar'] = 'NAO';
-        header('Location: index.php?login=erro');
+        header('Location: view/login.view.php?login=erro');
         exit;
     }
 }
-
-?>

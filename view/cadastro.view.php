@@ -36,7 +36,6 @@
         }
 
         .card-login .card-header {
-            color: #fff;
             font-size: 20px;
         }
     </style>
@@ -44,23 +43,23 @@
 
 <body class="bg-light">
     <div class="card-login">
-        <div class="card bg-dark">
+        <div class="card bg-light">
             <div class="card-header">
-                Login
+                Cadastrar
             </div>
             <div class="card-body">
-                <form action="../valida_login.php" method="post">
+                <form action="../cadastro_login.php" method="post">
                     <div class="form-group">
-                        <input name="nome" type="email" class="form-control w-100" placeholder="Nome">
+                        <input name="nome" type="name" class="form-control w-100" placeholder="Nome">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mt-1">
                         <input name="email" type="email" class="form-control w-100" placeholder="E-mail">
                     </div>
                     <div class="form-group mt-1 mb-1">
                         <input name="senha" type="password" class="form-control w-100" placeholder="Senha">
                     </div>
-                    <button class="btn btn-outline-secondary btn-block mt-3" type="submit">
-                        Cadastrar
+                    <button class="btn btn-success btn-block mt-3" type="submit">
+                        Salvar
                     </button>
                 </form>
             </div>
