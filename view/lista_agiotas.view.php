@@ -54,9 +54,8 @@ require '../controller/agiota.controller.php';
 
                             <td class="align-middle">
                                 <?php
-                                // Loop para exibir as estrelas
                                 for ($i = 0; $i < $agiota->estrelas; $i++) {
-                                    echo '<i class="fas fa-star"></i>'; // Ícone de estrela do Font Awesome
+                                    echo '<i class="fas fa-star"></i>';
                                 }
                                 ?>
                             </td>

@@ -1,35 +1,46 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 require '../model/agiota.model.php';
 require '../service/agiota.service.php';
 require '../model/conexao.php';
 
 $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
+
 if ($acao == 'buscarTodosAgiotas') {
-    $agiota = new Agiota('', '', '', '');
     $conexao = new Conexao();
 
-    $agiotaService = new AgiotaService($conexao, $agiota);
+    $agiotaService = new AgiotaService($conexao);
     $listaAgiotas = $agiotaService->buscarTodosAgiotas();
 
     $listaUrls = array();
     $agiotaData = [];
     foreach ($listaAgiotas as $agiota) {
         $agiotaData[] = [
+            'id' => $agiota->id,
             'url' => $agiota->url,
-            'nome' => $agiota->nome
+            'nome' => $agiota->nome,
+            'favorito' => $agiota->favorito
         ];
     }
 } else if ($acao == 'favoritarAgiota') {
-    $agiota = new Agiota('', '', '', '');
     $conexao = new Conexao();
+    $agiotaService = new AgiotaService($conexao);
 
-    $agiotaService = new AgiotaService($conexao, $agiota);
-    $agiotaService->favoritarAgiota($id, $nome_agiota);
+    $id = $_GET['id'];
+    $agiotaService->favoritarAgiota($id);
 } else if ($acao = 'buscarAgiotasFavoritos') {
-    $agiota = new Agiota('', '', '', '');
     $conexao = new Conexao();
 
-    $agiotaService = new AgiotaService($conexao, $agiota);
+    $agiotaService = new AgiotaService($conexao);
     $listaFavoritos = $agiotaService->buscarAgiotasFavoritos();
+} else if ($acao == 'negociar') {
+    $id = isset($_GET['id']) ? $_GET['id'] : null;
+    $valor = isset($_GET['valor']) ? $_GET['valor'] : null;
+
+    $conexao = new Conexao();
+
+    $agiotaService = new AgiotaService($conexao);
+    $agiotaService->negociar($id, $valor);
 }

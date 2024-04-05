@@ -5,10 +5,9 @@ class AgiotaService
     private $conexao;
     private $agiota;
 
-    public function __construct(Conexao $conexao, Agiota $agiota)
+    public function __construct(Conexao $conexao)
     {
         $this->conexao = $conexao->conectar();
-        $this->agiota = $agiota;
     }
 
     public function buscarTodosAgiotas()
@@ -25,17 +24,15 @@ class AgiotaService
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function favoritarAgiota($id, $nome_agiota)
+    public function favoritarAgiota($id)
     {
-        $query = 'INSERT INTO favoritos (agiota_id, nome_agiota) VALUES (:agiota_id, :nome_agiota)';
+        $query = 'UPDATE agiota
+              SET favorito = 1
+              WHERE id = :agiota_id';
 
-        $params = array(
-            ':agiota_id' => $id,
-            ':nome_agiota' => $nome_agiota
-        );
-        
         $stmt = $this->conexao->prepare($query);
-        $stmt->execute($params);
+        $stmt->bindValue(':agiota_id', $id);
+        $stmt->execute();
     }
 
     public function buscarAgiotasFavoritos()
@@ -53,5 +50,13 @@ class AgiotaService
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function negociar($id, $valor)
+    {
+        $query = 'INSERT INTO divida ($id_agiota, $valor) VALUES (?, ?)';
 
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bindValue(1, $id);
+        $stmt->bindValue(2, $valor);
+        $stmt->execute();
+    }
 }
