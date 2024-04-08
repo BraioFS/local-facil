@@ -1,5 +1,10 @@
 * {
-    font-family: 'Cera Round Pro', sans-serif;
+	font-family: 'Cera Round Pro', sans-serif;
+}
+
+:root {
+	--cor-branco-padrao: #FFFFFF;
+	--cor-cinza-claro: #F2F2F2;
 }
 
 .menu {
@@ -15,12 +20,6 @@
 	padding: 25px !important;
 }
 
-li.list-group-item.active {
-	background-color: #fff;
-	border-color: #009933;
-	border-left: solid 10px #009933;
-}
-
 li a {
 	color: #212529;
 }
@@ -30,7 +29,11 @@ li a:hover {
 }
 
 h4 {
-	color: #009933 !important;
+	color: #212529 !important;
+}
+
+h3{
+	font-weight: bold;
 }
 
 .card-login {
@@ -41,17 +44,11 @@ h4 {
 
 #map {
 	height: 100vh;
-	/* Ocupa a altura total da tela */
 	width: 100%;
-	/* Ocupa a largura total da tela */
 	position: fixed;
-	/* Permite que o mapa ocupe a tela toda */
 	top: 0;
-	/* Alinha o mapa ao topo da tela */
 	left: 0;
-	/* Alinha o mapa à esquerda da tela */
 	z-index: 0;
-	/* Garante que o mapa fique abaixo de outros elementos */
 }
 
 #input-container {
@@ -83,6 +80,10 @@ a {
 	text-decoration: none;
 }
 
-input{
+input {
 	height: 50px;
+}
+
+.table tbody tr {
+    line-height: 1.5; /* ajuste o valor conforme necessário */
 }

@@ -8,6 +8,8 @@ class Agiota
     private $estrelas;
     private $favorito;
     private $mortes;
+    private $emprestimo;
+    private $procurado;
 
     public function __get($atributo)
     {

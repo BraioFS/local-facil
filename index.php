@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Localizador de CEP</title>
+	<title>Agiota na Mão</title>
 
 	<!-- Folha de Estilo do Bootstrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -34,20 +34,20 @@
 <body class="bg-light">
 	<div class="container">
 		<div class="row">
-			<img src="tmp/img/logo-palinha.svg" class="shadow-sm rounded mx-auto d-block" alt="foto" width="300" height="300">
+			<img src="tmp/img/logo-acordo.svg" class="bg-white shadow-sm rounded mx-auto d-block" alt="foto" width="300" height="300">
 		</div>
 
-		<div class="row mt-5">
+		<div class="row mt-4">
 			<div class="col text-center">
-				<div class="shadow-sm bg-light p-3 w-50 mx-auto">
-					<label class="mb-0">Conectado quem precisa de dinheiro aos melhores agiotas!</label>
+				<div class="shadow-sm bg-white p-3 w-50 mx-auto">
+					<label class="mb-0">Pague em dia, para não perder uma perninha!</label>
 				</div>
 			</div>
 		</div>
-		<div class="row mt-5 text-center">
+		<div class="row mt-4 text-center">
 			<div class="col">
-				<a href="view/cadastro.view.php" class="shadow-sm btn btn-primary w-25 ml-2 mx-auto">Cadastre-se</a>
-				<a href="view/login.view.php" class="shadow-sm btn btn-secondary w-25 mx-auto">Logar</a>
+				<a href="view/cadastro.view.php" class="shadow-sm btn btn-dark w-25 ml-2 mx-auto">Cadastre-se</a>
+				<a href="view/login.view.php" class="shadow-sm btn btn-info w-25 mx-auto">Logar</a>
 			</div>
 		</div>
 	</div>

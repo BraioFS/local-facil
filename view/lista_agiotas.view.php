@@ -1,5 +1,5 @@
 <?php
-$acao = 'buscarTodosAgiotas';
+$acao = 'buscarAgiotasRecomenados';
 require '../controller/agiota.controller.php';
 
 ?>
@@ -11,32 +11,29 @@ require '../controller/agiota.controller.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Agiotas</title>
+    <title>Lista de Agiotas</title>
 
-    <!-- Folha de Estilo do Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <!-- Folha de Estilo do Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-    <!-- Estilo personalizado -->
     <link rel="stylesheet" href="estilo/estilo.css">
 </head>
 
-<body>
+<body class="bg-light">
     <div class="container">
-        <div class="row mt-2">
-            <h1>Agiotas Virtuais</h1>
-        </div>
-
-        <div class="row mt-2">
-            <table class="table table-striped table-sm">
-                <thead class="table-light">
+        <div class="row mt-3 shadow-sm bg-white table-responsive caption-top p-3 rounded">
+            <caption>
+                <h4><b>Agiotas Recomendados</b></h4>
+            </caption>
+            <table class="table table-sm table-hover">
+                <thead>
                     <tr>
                         <th scope="col">Perfil</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Periculosidade</th>
-                        <th scope="col">Mortes</th>
+                        <th scope="col">Vítimas</th>
+                        <th scope="col" class="pl-5">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,24 +61,34 @@ require '../controller/agiota.controller.php';
                                 <?php echo $agiota->mortes; ?>
                             </td>
 
+                            <td class="align-middle">
+                                <a href="./page_info_agiota.view.php?id=<?php echo $agiota->id; ?>">
+                                    <button type="button" class="btn btn-success ml-2"><i class="fas fa-eye"></i> Visualizar</button>
+
+                                </a>
+                            </td>
+
                         </tr>
                     <?php
 
                     }
                     ?>
-                    
+
                 </tbody>
             </table>
         </div>
 
-        <div class="row justify-content-start">
+        <div class="row mt-3">
             <a href="./menu.view.php">
-                <button type="button" class="btn btn-outline-secondary mb-2 ml-2">
-                    <i class="fas fa-arrow-left mr-1"></i> Voltar
+                <button type="button" class="btn btn-secondary mb-2">
+                    <i class="fas fa-angle-left mr-1"></i> Voltar
                 </button>
             </a>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </body>
 
 </html>

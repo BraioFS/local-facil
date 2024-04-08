@@ -43,11 +43,11 @@
 
 <body class="bg-light">
     <div class="card-login">
-        <div class="card bg-light">
-            <div class="card-header">
+        <div class="card">
+            <div class="card-header bg-light">
                 Cadastrar
             </div>
-            <div class="card-body">
+            <div class="card-body bg-white">
                 <form action="../cadastro_login.php" method="post">
                     <div class="form-group">
                         <input name="nome" type="name" class="form-control w-100" placeholder="Nome">
@@ -58,7 +58,7 @@
                     <div class="form-group mt-1 mb-1">
                         <input name="senha" type="password" class="form-control w-100" placeholder="Senha">
                     </div>
-                    <button class="btn btn-success btn-block mt-3" type="submit">
+                    <button class="btn btn-dark btn-block mt-3" type="submit">
                         Salvar
                     </button>
                 </form>

@@ -45,11 +45,11 @@
 
 <body class="bg-light">
 	<div class="card-login">
-		<div class="card bg-light">
-			<div class="card-header">
+		<div class="card">
+			<div class="card-header bg-light">
 				Login
 			</div>
-			<div class="card-body">
+			<div class="card-body bg-white">
 				<form action="../valida_login.php" method="post">
 					<div class="form-group">
 						<input name="email" type="email" class="form-control w-100" placeholder="E-mail">
@@ -62,7 +62,7 @@
 							Usuário ou senha inválido(s)
 						</div>
 					<?php } ?>
-					<button class="btn btn-success btn-block mt-3" type="submit">
+					<button class="btn btn-dark btn-block mt-3" type="submit">
 						Entrar
 					</button>
 				</form>

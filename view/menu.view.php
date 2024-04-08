@@ -11,7 +11,7 @@ require '../controller/agiota.controller.php';
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Localizador de CEP</title>
+	<title>Menu</title>
 
 	<!-- Folha de Estilo do Bootstrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -27,7 +27,7 @@ require '../controller/agiota.controller.php';
 
 </head>
 
-<body>
+<body class="bg-light">
 	<div id="map"></div>
 
 	<div id="input-container">
@@ -66,6 +66,7 @@ require '../controller/agiota.controller.php';
 				},
 				success: function(response) {
 					alert('Agiota favoritado!');
+					window.location.reload();
 				},
 				error: function(xhr, status, error) {
 					alert('Erro ao favoritar o Agiota, por favor tente novamente mais tarde!.');
@@ -74,8 +75,8 @@ require '../controller/agiota.controller.php';
 			});
 		}
 
-		function negociar(id) {
-			window.location.href="./page_negociar.view.php?id=" + id;
+		function visualizar(id) {
+			window.location.href="./page_info_agiota.view.php?id=" + id;
 		}
 
 		function criarPopup(id, imagemUrl, nome, estrelas, favorito) {
@@ -99,7 +100,7 @@ require '../controller/agiota.controller.php';
 				popupContent += '<button class="btn btn-danger btn-sm mr-2" onclick="favoritar(' + id + ')"><i class="fas fa-heart"></i></button>';
 			}
 
-			popupContent += '<button class="btn btn-success btn-sm" onclick="negociar(' + id + ')">Negociar</button>';
+			popupContent += '<button class="btn btn-success btn-sm" onclick="visualizar(' + id + ')"><i class="fas fa-eye"></i></button>';
 			popupContent += '</div>';
 
 			return L.popup().setContent(popupContent);
