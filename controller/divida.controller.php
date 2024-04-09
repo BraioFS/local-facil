@@ -21,7 +21,7 @@ if ($acao == 'buscarTodasDividas') {
     // Gerar um número aleatório entre 0 e 1
     $rand = rand(0, 2);
 
-    // 50% de chance de sucesso, 50% de chance de falha
+    // 33% de chance de sucesso, 66% de chance de falha
     if ($rand == 1) {
         $conexao = new Conexao();
 

@@ -32,15 +32,18 @@ class LoginController
 
     public function cadastrar($nome, $email, $senha)
     {
-        $query = 'insert into usuario(nome, email, senha)values(:nome, :email, :senha)';
+        $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+
+        $query = 'INSERT INTO usuario (nome, email, senha) VALUES (:nome, :email, :senha)';
         $stmt = $this->conexao->prepare($query);
         $stmt->bindValue(':nome', $nome);
         $stmt->bindValue(':email', $email);
-        $stmt->bindValue(':senha', $senha);
+        $stmt->bindValue(':senha', $senha_hash);
         $stmt->execute();
 
         header('Location: ./view/login.view.php');
     }
+
 
     private function buscarUsuarioBanco()
     {

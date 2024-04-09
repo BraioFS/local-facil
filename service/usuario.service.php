@@ -13,14 +13,15 @@ class UsuarioService
 
     public function inserir()
     {
-        $query = 'insert into usuario(nome, email, senha)values(:nome, :email, :senha)';
+        $senha_hash = password_hash($this->usuario->__get('senha'), PASSWORD_DEFAULT);
+
+        $query = 'INSERT INTO usuario (nome, email, senha) VALUES (:nome, :email, :senha)';
         $stmt = $this->conexao->prepare($query);
         $stmt->bindValue(':nome', $this->usuario->__get('nome'));
         $stmt->bindValue(':email', $this->usuario->__get('email'));
-        $stmt->bindValue(':senha', $this->usuario->__get('senha'));
+        $stmt->bindValue(':senha', $senha_hash);
         $stmt->execute();
     }
-
     public function recuperar()
     {
         //R - read
@@ -104,7 +105,3 @@ class UsuarioService
         $stmt->execute();
     }
 }
-
-
-
-?>
