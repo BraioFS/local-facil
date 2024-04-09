@@ -108,20 +108,50 @@
                 </div>
                 <div class="modal-body row justify-content-center">
                     <input id="valorEmprestimo" type="text" class="form-control col-10" placeholder="Digite o valor do empréstimo">
+                    <input id="dataPagamento" type="date" class="form-control col-10 mt-3" placeholder="Selecione a data de pagamento" min="<?php echo date('Y-m-d'); ?>">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times mr-1"></i> Cancelar</button>
-                    <button type="button" class="btn btn-success"><i class="fas fa-handshake mr-1"></i> Fechar Negócio</button>
+                    <button id="fecharNegocioBtn" type="button" class="btn btn-success"><i class="fas fa-handshake mr-1"></i> Fazer Oferta</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Mascara para o campo input -->
     <script>
         $(document).ready(function() {
             $('#valorEmprestimo').mask('000.000,00', {
                 reverse: true
+            });
+
+            $('#fecharNegocioBtn').click(function() {
+                var nome = "<?php echo $agiota->nome; ?>";
+                var valorEmprestimo = $('#valorEmprestimo').val();
+                var dataPagamento = $('#dataPagamento').val();
+
+                $.ajax({
+                    url: '../controller/divida.controller.php',
+                    method: 'GET',
+                    data: {
+                        acao: 'fecharNegocio',
+                        nome: nome,
+                        valor: valorEmprestimo,
+                        dataPagamento: dataPagamento
+                    },
+                    success: function(response) {
+                        if (response === 'success') {
+                            alert("Parabéns! negócio fechado com sucesso!.");
+                            window.location.reload();
+                        } else if (response === 'failed') {
+                            alert("Infelizmente o Agiota recusou sua proposta! Tente novamente com outro valor.");
+                            window.location.reload();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Erro ao processar a requisição. Tente novamente mais tarde.");
+                        console.error(error);
+                    }
+                });
             });
         });
     </script>

@@ -76,16 +76,6 @@ class AgiotaService
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function negociar($id, $valor)
-    {
-        $query = 'INSERT INTO divida ($id_agiota, $valor) VALUES (?, ?)';
-
-        $stmt = $this->conexao->prepare($query);
-        $stmt->bindValue(1, $id);
-        $stmt->bindValue(2, $valor);
-        $stmt->execute();
-    }
-
     public function buscarAgiotaPorId($id)
     {
         $query = 'SELECT * FROM agiota WHERE id = :id';

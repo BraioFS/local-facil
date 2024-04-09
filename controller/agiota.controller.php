@@ -59,12 +59,6 @@ if ($acao == 'buscarTodosAgiotas') {
 
     $agiotaService = new AgiotaService($conexao);
     $listaFavoritos = $agiotaService->buscarAgiotasFavoritos();
-} else if ($acao == 'negociar') {
-    $id = isset($_GET['id']) ? $_GET['id'] : null;
-    $valor = isset($_GET['valor']) ? $_GET['valor'] : null;
-
-    $conexao = new Conexao();
-
-    $agiotaService = new AgiotaService($conexao);
-    $agiotaService->negociar($id, $valor);
+} else {
+    echo "Ação inválida.";
 }
